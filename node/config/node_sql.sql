@@ -34,17 +34,7 @@ CREATE TABLE `user_info` (
   `user_phone` char(11) NOT NULL COMMENT '手机号',
   `user_head` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '头像',
   `user_name` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '用户名',
-  PRIMARY KEY (`user_phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Table structure for table `user_login` */
-
-DROP TABLE IF EXISTS `user_login`;
-
-CREATE TABLE `user_login` (
-  `user_phone` char(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号',
-  `user_pwd` char(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '密码(哈希加密)',
-  `user_name` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '用户名',
+  `user_pwd` char(32) NOT NULL COMMENT '密码（哈希）',
   PRIMARY KEY (`user_phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

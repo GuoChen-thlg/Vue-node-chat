@@ -12,7 +12,7 @@ exports.api = app => [
     req.on("end", () => {
       let data = JSON.parse(currentData);
       db.query(
-        "SELECT * FROM `user_login` WHERE `user_phone`=?",
+        "SELECT * FROM `user_info` WHERE `user_phone`=?",
         [data.phone],
         (error, rows) => {
           if (error) {
@@ -30,7 +30,7 @@ exports.api = app => [
                   init: "此手机号已经注册，请登录"
                 })
               : db.query(
-                  "INSERT INTO `node_chatroom`.`user_login` (`user_phone`, `user_pwd`,`user_name`) VALUES (?,?,?)",
+                  "INSERT INTO `node_chatroom`.`user_info` (`user_phone`, `user_pwd`,`user_name`) VALUES (?,?,?)",
                   [data.phone, newpwd, "用户" + data.phone],
                   function(error, rows) {
                     if (error) {
@@ -60,9 +60,18 @@ exports.api = app => [
       currentData += data;
     });
     req.on("end", () => {
-      let data = JSON.parse(currentData);
+      let data = JSON.parse(currentData)
+      // res.json({
+      //   code: 200,
+      //   user: {
+      //     phone: data.phone,
+      //     name: data.phone,
+      //     head: data.phone
+      //   },
+      //   hint: "登陆成功"
+      // })
       db.query(
-        "SELECT l.`user_pwd` pwd,i.`user_phone` phone,i.`user_head` head,i.`user_name` uname FROM `user_login` l,`user_info` i WHERE l.`user_phone`=? AND l.`user_phone`=i.`user_phone`",
+        "SELECT `user_pwd` pwd,`user_phone` phone,`user_head` head,`user_name` uname FROM `user_info`  WHERE `user_phone`=?",
         [data.phone],
         (error, rows) => {
           console.log(error, rows);

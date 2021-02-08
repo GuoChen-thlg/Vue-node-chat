@@ -151,29 +151,29 @@ export default {
     },
     /** 注册
      */
-    register () {      this.$router.push({ name: 'login',params: { phone: this.phone.val } })
-      // this.phoneTest()
-      // this.codeTest()
-      // this.pwd_test()
-      // this.last_pwd_test()
+    register () {      //this.$router.push({ name: 'login',params: { phone: this.phone.val } })
+      this.phoneTest()
+      this.codeTest()
+      this.pwd_test()
+      this.last_pwd_test()
 
-      // if(this.phone.test&&this.code.test&&this.password.first_text&&this.password.last_text) {
-      //   // 注册请求
-      //   Api({
-      //     method: 'POST',
-      //     url: '/api/register',
-      //     data: {
-      //       phone: this.phone.val,
-      //       password: this.password.first_passwore
-      //     }
-      //   }).then((data => {
-      //     if(data.code==200) {
-      //       this.$router.push({ name: 'login',params: { phone: this.phone.val } })
-      //     } else {
-      //       console.error(data.hint);
-      //     }
-      //   }))
-      // }
+      if(this.phone.test&&this.code.test&&this.password.first_text&&this.password.last_text) {
+        // 注册请求
+        Api({
+          method: 'POST',
+          url: '/api/register',
+          data: {
+            phone: this.phone.val,
+            password: this.password.first_passwore
+          }
+        }).then((data => {
+          if(data.code==200) {
+            this.$router.push({ name: 'login',params: { phone: this.phone.val } })
+          } else {
+            console.error(data.hint);
+          }
+        }))
+      }
     }
   },
   components: {

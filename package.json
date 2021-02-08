@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "node build/build.js && nodemon app.js",
+    "start": "nodemon app.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "build": "node build/build.js"
@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "multer": "^1.4.2",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
     "socket.io": "^2.3.0",
     "vue": "^2.5.2",
     "vue-router": "^3.3.4",
